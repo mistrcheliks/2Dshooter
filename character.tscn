@@ -1,24 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://banc0k65ij3xc"]
+[gd_scene load_steps=6 format=3 uid="uid://banc0k65ij3xc"]
 
 [ext_resource type="Script" uid="uid://dydpmgsntpchd" path="res://character.gd" id="1_pjt0s"]
-[ext_resource type="Texture2D" uid="uid://daa1ut8cfo6ky" path="res://icon.svg" id="2_wa5vi"]
+[ext_resource type="Texture2D" uid="uid://jrapljh3661n" path="res://sprites/IMG_20250121_171303.jpg" id="2_wa5vi"]
+[ext_resource type="PackedScene" uid="uid://o5wg6p8mkmeu" path="res://gun.tscn" id="3_wa5vi"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wfnr8"]
-radius = 60.531
+[sub_resource type="CircleShape2D" id="CircleShape2D_wa5vi"]
+radius = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_px5sl"]
-radius = 61.4003
+radius = 24.0
 
 [node name="character" type="CharacterBody2D"]
+z_index = 5
 script = ExtResource("1_pjt0s")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="character_sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(0.0138889, 0.0104167)
 texture = ExtResource("2_wa5vi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_wfnr8")
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_wa5vi")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="player_radius" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_radius"]
+position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_px5sl")
+disabled = true
+
+[node name="gun" parent="." instance=ExtResource("3_wa5vi")]
+position = Vector2(0, 8)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://o5wg6p8mkmeu"]
+
+[ext_resource type="Script" uid="uid://clath5k830fih" path="res://gun.gd" id="1_dk5gl"]
+[ext_resource type="Texture2D" uid="uid://b0eycfjl0uso3" path="res://sprites/6880b0ec-ba9e-43d7-a630-49a3c9ad5837_removalai_preview.png" id="2_dk5gl"]
+
+[node name="gun" type="CharacterBody2D"]
+z_index = 6
+script = ExtResource("1_dk5gl")
+
+[node name="gun_sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.124434)
+texture = ExtResource("2_dk5gl")
+
+[node name="gunpoint" type="Marker2D" parent="."]
+z_as_relative = false
+position = Vector2(40, 0)
+gizmo_extents = 0.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.101
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,20 +1,20 @@
 extends CharacterBody2D
 
-var move_speed = 250
-func _ready() -> void:
-	pass
-func _physics_process(delta: float):
-	var move = Vector2()
-	if Input.is_action_pressed('up'):
-		move.y = move.y - 1
-	if Input.is_action_pressed('down'):
-		move.y = move.y + 1
-	if Input.is_action_pressed('left'):
-		move.x = move.x - 1
-	if Input.is_action_pressed('right'):
-		move.x = move.x + 1
-	move = move.normalized()
-	velocity = move * move_speed
+var move_speed = 300
+func _ready():
+	add_to_group('player')
+func _process(delta: float):
+	#передвижение игрока
+	var direction = Input.get_vector("left", "right", "up", "down")
+	velocity = direction * move_speed
 	move_and_slide()
 	
+	#позиционирование камеры
+	var vect = get_global_mouse_position() - position
+	$Camera.position = Vector2(vect.x/8,vect.y/6)
 	
+	if global_position.direction_to(get_global_mouse_position()).normalized().x < 0:
+		$character_sprite.flip_h = true
+	else:
+		$character_sprite.flip_h = false
+		

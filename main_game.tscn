@@ -1,4 +1,16 @@
-[gd_scene format=3 uid="uid://cmfhwklpaeg3h"]
+[gd_scene load_steps=4 format=3 uid="uid://cmfhwklpaeg3h"]
+
+[ext_resource type="PackedScene" uid="uid://banc0k65ij3xc" path="res://character.tscn" id="1_1oj5k"]
+[ext_resource type="Script" uid="uid://dfif7byiiq4lm" path="res://camera.gd" id="2_yx7mw"]
+[ext_resource type="PackedScene" uid="uid://dec3wicykitm" path="res://enemy.tscn" id="3_ykeeq"]
 
 [node name="main_game" type="Node2D"]
-position = Vector2(536, 302)
+
+[node name="character" parent="." instance=ExtResource("1_1oj5k")]
+
+[node name="Camera" type="Camera2D" parent="character"]
+position_smoothing_speed = 3.0
+script = ExtResource("2_yx7mw")
+
+[node name="enemy" parent="." instance=ExtResource("3_ykeeq")]
+position = Vector2(-323.105, 0)
