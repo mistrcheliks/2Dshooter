@@ -15,8 +15,8 @@ script = ExtResource("1_4gyqm")
 
 [node name="enemy_sprite" type="Sprite2D" parent="."]
 z_index = 6
-position = Vector2(1.43051e-06, 2.00272e-05)
-scale = Vector2(0.05, 0.05)
+position = Vector2(6.875, 2.00272e-05)
+scale = Vector2(0.0600365, 0.05)
 texture = ExtResource("2_qi2p4")
 flip_h = true
 script = ExtResource("3_qi2p4")
@@ -28,3 +28,5 @@ shape = SubResource("CircleShape2D_iifgy")
 
 [node name="enemy_hurtbox" type="CollisionShape2D" parent="enemy_hurtbox"]
 shape = SubResource("CircleShape2D_qi2p4")
+
+[connection signal="body_entered" from="enemy_hurtbox" to="." method="_on_enemy_hurtbox_body_entered"]

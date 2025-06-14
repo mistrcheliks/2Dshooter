@@ -10,4 +10,7 @@ func _physics_process(delta):
 		$bullet_sprite.flip_h = false
 	position += transform.x * speed * delta
 
-	
+func _on_body_entered(body: Node) -> void:
+	if body.has_method('handle_hit'):
+		body.handle_hit()
+		queue_free()

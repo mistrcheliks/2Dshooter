@@ -11,11 +11,13 @@ z_index = 9
 script = ExtResource("1_v8qja")
 
 [node name="bullet_sprite" type="Sprite2D" parent="."]
-position = Vector2(-5.70381e-06, -0.0337911)
+position = Vector2(-1.90735e-06, -0.0337911)
 rotation = 1.5708
-scale = Vector2(0.158729, 0.030246)
+scale = Vector2(0.158729, 0.0625644)
 texture = ExtResource("2_v8qja")
 region_rect = Rect2(215, 8, 82, 504)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v8qja")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
